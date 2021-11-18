@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Main-Class: com.example.grammar_parser.Main
+Class-Path: bootstrapfx-core-0.4.0.jar javafx-base-11.0.2.jar javafx-con
+ trols-11.0.2.jar javafx-graphics-11.0.2.jar javafx-fxml-11.0.2-linux.ja
+ r javafx-base-11.0.2-linux.jar javafx-controls-11.0.2-linux.jar javafx-
+ graphics-11.0.2-linux.jar formsfx-core-11.3.2.jar
+
