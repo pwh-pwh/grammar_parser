@@ -1,16 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.grammar_parser.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" fx:id="vbox"
+      style="-fx-background-color: #efeec1; -fx-background-size: stretch stretch; -fx-background-position: center center;"
+      xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.grammar_parser.controller.HelloController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="请输入文法规则：eg.(E-&gt;E+T)">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+                <styleClass>
+                    <String fx:value="text-primary" />
+                </styleClass>
+            </Label>
+            <TextArea prefHeight="200.0" prefWidth="200.0" fx:id="grammar_text"/>
+            <Button mnemonicParsing="false" text="从文件打开文法规则" fx:id="openFileBtn" onMouseClicked="#onOpenFileBtnClick">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-success" />
+                </styleClass>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" top="30.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Label text="请输入句子：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+                <padding>
+                    <Insets top="30.0" />
+                </padding>
+                <styleClass>
+                    <String fx:value="text-primary" />
+                </styleClass>
+            </Label>
+            <TextField minWidth="130.0" fx:id="text">
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button mnemonicParsing="false" text="开始解析" onMouseClicked="#startParseClick">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-success" />
+                </styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="80.0" top="30.0" />
+               </HBox.margin></Button>
+         </children>
+          <HBox.margin>
+              <Insets bottom="100.0" />
+          </HBox.margin>
+      </HBox>
+
+      <TabPane prefHeight="400.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+
+        <tabs>
+          <Tab text="查看化简文法结果" fx:id="t1">
+              <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-default" />
+              </styleClass>
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="查看消除左公共因子结果" fx:id="t2">
+              <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-default" />
+              </styleClass>
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="查看消除左递归结果" fx:id="t3">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-default" />
+                </styleClass>
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+            <Tab text="查看first集合" fx:id="t4">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-default" />
+                </styleClass>
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+            <Tab text="查看follow集合" fx:id="t5">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-default" />
+                </styleClass>
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+            <Tab text="查看select集" fx:id="t6">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-default" />
+                </styleClass>
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+            <Tab text="查看最左推导的结果" fx:id="t7">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-default" />
+                </styleClass>
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
 </VBox>
